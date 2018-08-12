@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Products extends StatelessWidget {
   final List<String> products;
 
-  Products([this.products =  []]) {
+  Products([this.products =  const[]]) {
     print('[Products Widget] Constructor');
   }
 
@@ -18,15 +18,23 @@ class Products extends StatelessWidget {
                     );
   }
 
+  Widget _buildProductsList() {
+    Widget productCard =  Center( child: Text("No Products found, please add some")); //or return an empty container Container();
+
+    if(products.length > 0 ) {
+      productCard = ListView.builder(
+          itemBuilder: _buildProductItem,
+          itemCount: products.length
+      );
+    }
+    //RENDERING LISTVIEW FOR INFINIT LIST OF ITEMS
+    return productCard;
+  }
+
   @override
   Widget build(BuildContext context) {
 
-     //RENDERING LISTVIEW FOR INFINIT LIST OF ITEMS
-    return ListView.builder(
-       itemBuilder: _buildProductItem,
-       itemCount: products.length
-     );
-
+       return _buildProductsList();
     //using the list view in this way is ok for
     // a finite list of items
 //        return ListView(
