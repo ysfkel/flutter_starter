@@ -1,0 +1,67 @@
+
+import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
+import 'package:flutter/rendering.dart';
+
+void main() {
+  debugPaintSizeEnabled = true;
+  //shows where events are listened
+  debugPaintPointersEnabled = true;
+  debugPaintBaselinesEnabled = true;
+  runApp(MainApp());
+}
+
+class MainApp extends StatelessWidget {
+
+   @override
+   Widget build(BuildContext context) {
+
+        return MaterialApp (
+            debugShowMaterialGrid: true,
+            title: 'hI Welcome to flutter',
+             home: Scaffold(
+                 appBar: AppBar(title: Text('welcome')),
+                 body: Center(
+                    child: Text('NAME:')
+                  )
+             )
+        );
+   }
+}
+
+//class MyApp extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    final wordPair = WordPair.random();
+//    return MaterialApp(
+//      title: 'Welcome to Flutter',
+//      home: Scaffold(
+//        appBar: AppBar(
+//          title: Text('Welcome to Flutter')
+//        ),
+//        body: Center(
+//          //child:Text('Hello world Flutter')
+//          //child: Text(wordPair.asPascalCase)
+//          child: RandomWords()
+//        )
+//      )
+//    );
+//  }
+//}
+//
+//class RandomWords extends StatefulWidget {
+//  @override
+//   RandomWordsState createState() => new RandomWordsState();
+//}
+//
+//class RandomWordsState extends State<RandomWords> {
+//      final _suggestions = <WordPair>[];
+//      final _biggerFont = const TextStyle(fontSize: 18.0);
+//
+//      @override
+//      Widget build(BuildContext context) {
+//           final wordPair = WordPair.random();
+//           return Text(wordPair.asPascalCase);
+//      }
+//}
+
