@@ -2,31 +2,32 @@ import 'package:flutter/material.dart';
 import './pages/product.dart';
 
 class Products extends StatelessWidget {
-  final List<String> products;
+  final List<Map> products;
 
   Products([this.products =  const[]]) {
     print('[Products Widget] Constructor');
   }
 
 
-
-
   Widget _buildProductItem(BuildContext context, int index) {
      return Card(
                       child: Column(
                         children: <Widget>[
-                          Image.asset('assets/food.jpg'),
-                          Text(products[index]),
+                          Image.asset(products[index]['image']),
+                          Container(padding:EdgeInsets.all(10.0),child:Text(products[index]['title'])),
                           ButtonBar(
                               alignment: MainAxisAlignment.center,
                               children: <Widget>[FlatButton(
                              child: Text('Details'),
-                             onPressed:() => Navigator.push(
+
+                             onPressed:() => Navigator.push<bool/**the boolean indicates the return type of the future*/>(
                                context,
                                MaterialPageRoute(
-                                 builder: (BuildContext context) =>ProductPage(),
+                                 builder: (BuildContext context) =>ProductPage(products[index]['title'], products[index]['image']),
                                ),
-                             ),
+                             ).then((bool value) {
+                                  print('return', value)
+                             }),
                           )])
                         ],
                       ),
