@@ -3,8 +3,10 @@ import './pages/product.dart';
 
 class Products extends StatelessWidget {
   final List<Map> products;
+  final Function deleteProduct;
 
-  Products([this.products =  const[]]) {
+//  Products([this.products =  const[]]) {
+  Products(this.products, {this.deleteProduct}) {
     print('[Products Widget] Constructor');
   }
 
@@ -26,7 +28,10 @@ class Products extends StatelessWidget {
                                  builder: (BuildContext context) =>ProductPage(products[index]['title'], products[index]['image']),
                                ),
                              ).then((bool value) {
-                                  print('return', value)
+                                  print( value);
+                                  if(value) {
+                                    deleteProduct(index);
+                                  }
                              }),
                           )])
                         ],

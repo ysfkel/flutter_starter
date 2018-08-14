@@ -41,6 +41,12 @@ class _ProductManagerState extends State<ProductManager> {
     });
   }
 
+  void _deleteProduct(int index) {
+      setState((){
+          _products.removeAt(index);
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     print('[ProductManager State] build()');
@@ -52,7 +58,7 @@ class _ProductManagerState extends State<ProductManager> {
         ),
         //LIST VIEWS MUST BE WRAPPED IN A CONTAINER (HEIGHT MUST BE SPECIFIED) OR EXPANDED CONTAINER
         Expanded(
-          child: Products(_products)
+          child: Products(_products, deleteProduct: _deleteProduct)
         )
       ],
     );
