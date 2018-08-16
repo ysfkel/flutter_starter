@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './products.dart';
+import './product_create.dart';
+import './product_list.dart';
 
 class ProductAdmin extends StatelessWidget {
 
@@ -15,12 +17,27 @@ class ProductAdmin extends StatelessWidget {
               title: Text('Choose')
             ),
             ListTile(title: Text('All Products'), onTap:(){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => ProductsPage()));
+                Navigator.pushReplacementNamed(context, '/');
             })
           ])
         ),
-        appBar: AppBar(title: Text('Product Admin')),
-        body: Center(child: Text('Product Admin'))
+        appBar: AppBar(
+            title: Text('Product Admin'),
+            bottom: TabBar(tabs: <Widget>[
+                Tab(
+                    icon: Icon(Icons.create),
+                    text: 'Create Product'),
+                Tab(
+                    icon: Icon(Icons.list),
+                    text: 'My Products')
+            ]),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            ProductCreatePage(),
+            ProductListPage()
+          ]
+        )
       ),);
   }
 }
