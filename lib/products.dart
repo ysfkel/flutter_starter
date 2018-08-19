@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import './pages/product.dart';
 
 class Products extends StatelessWidget {
-  final List<Map> products;
-  final Function deleteProduct;
+  final List<Map<String, dynamic>> products;
 
 //  Products([this.products =  const[]]) {
-  Products(this.products, {this.deleteProduct}) {
+  Products(this.products) {
     print('[Products Widget] Constructor');
   }
 
@@ -23,12 +21,8 @@ class Products extends StatelessWidget {
                              child: Text('Details'),
 
                              onPressed:() => Navigator.pushNamed<bool/**the boolean indicates
-                                 the return type of the future*/>(context,'/product/' +index.toString()).then((bool value) {
-                                  print( value);
-                                  if(value) {
-                                    deleteProduct(index);
-                                  }
-                             }),
+                                 the return type of the future*/>(context,'/product/' +index.toString())
+
                           )])
                         ],
                       ),
@@ -52,21 +46,6 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
 
        return _buildProductsList();
-    //using the list view in this way is ok for
-    // a finite list of items
-//        return ListView(
-//          children: products
-//              .map(
-//                (element) => Card(
-//                      child: Column(
-//                        children: <Widget>[
-//                          Image.asset('assets/food.jpg'),
-//                          Text(element)
-//                        ],
-//                      ),
-//                    ),
-//              )
-//              .toList(),
-//        );
+
   }
 }
